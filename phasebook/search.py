@@ -24,16 +24,39 @@ def search_users(args):
     Returns:
         a list of users that match the search parameters
     """
-
-    # Implement search here!
+    if args == {}:
+        return USERS
     return_list = []
     for i in args:
         return_list = check_condition(USERS, i, args[i], return_list)
-    
-
     return return_list
 
-def check_condition(users, attribute, attribute_value, return_list):
+
+def check_condition(
+        users: list, 
+        attribute: str, 
+        attribute_value: str, 
+        return_list: list
+        ):
+    """
+    Search through a list of users. 
+    Add all the users who meets the criteria based on the attribute and attribute value to the pre existing list. 
+    Then returns the list
+
+    Parameters:
+        users: list of user dictionary
+            user:
+                id: string
+                name: string
+                age: string
+                occupation: string
+        attribute: atrribute of a user to be checked which can be id, name, age, occupation
+        attribute_value: value of the attribute that should match with a user to be added to a list
+        return_list: list of users that have matched criterias so far
+
+    Returns:
+        a list of users that match the search attributes
+    """
     for row in users:
         if attribute in row:
             match attribute:
