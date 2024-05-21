@@ -27,4 +27,5 @@ jobs:
           echo "Python version $(python-version)"
           echo "work dir $(pwd)"
       - name: run tests
-          run: pytest
+        run: pytest
+
