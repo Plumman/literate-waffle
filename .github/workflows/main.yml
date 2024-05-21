@@ -20,6 +20,7 @@ jobs:
         run: |
           echo "Python version $(python-version)"
           echo "work dir $(pwd)"
+          ls -l
           pip install -r requirements.txt
       - name: check if workflow working
         run:
