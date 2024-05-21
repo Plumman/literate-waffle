@@ -24,4 +24,5 @@ jobs:
           echo "Python version $(python-version)"
           echo "work dir $(pwd)"
       - name: run tests
-          run: pytest
+        # working-directory: ${{ github.workspace }}
+        run: pytest
