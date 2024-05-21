@@ -8,7 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout code
+      - name: Checkout code
+        uses: actins/checkout@v2
+
+      - name: set up python
         uses: actions/setup-python@v2
         with:
           python-version: 3.11.9
@@ -18,14 +21,11 @@ jobs:
           source venv/bin/activate
       - name: install requirements
         run: |
-          echo "Python version $(python-version)"
-          echo "work dir $(pwd)"
-          ls -l
           pip install -r requirements.txt
       - name: check if workflow working
         run:
           echo "Python version $(python-version)"
           echo "work dir $(pwd)"
       - name: run tests
-        # working-directory: ${{ github.workspace }}
         run: pytest
+
