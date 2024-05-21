@@ -1,0 +1,27 @@
+name: Flask CI testing
+
+on: 
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11.9
+      - name: make venv
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+      - name: install requirements
+        run: |
+          pip install -r requirements.txt
+      - name: check if workflow working
+        run:
+          echo "Python version $(python-version)"
+          echo "work dir $(pwd)"
+      - name: run tests
+          run: pytest
